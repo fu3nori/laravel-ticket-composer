@@ -2,3 +2,5 @@
 .idea/laravel-ticket-composer.iml
 .idea/modules.xml
 .idea/vcs.xml
+.idea/php.xml
+laravel/public/.htaccess
