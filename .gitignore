@@ -3,7 +3,7 @@
 .idea/modules.xml
 .idea/vcs.xml
 .idea/php.xml
-laravel/public/.htaccess
+
 laravel/package-lock.json
 laravel/.idea/.gitignore
 laravel/.idea/deployment.xml
