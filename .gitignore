@@ -4,3 +4,13 @@
 .idea/vcs.xml
 .idea/php.xml
 laravel/public/.htaccess
+laravel/package-lock.json
+laravel/.idea/.gitignore
+laravel/.idea/deployment.xml
+laravel/.idea/laravel.iml
+laravel/.idea/modules.xml
+laravel/.idea/php.xml
+laravel/.idea/phpunit.xml
+laravel/.idea/vcs.xml
+laravel/.idea/commandlinetools/Laravel_2021_06_23_7_15.xml
+laravel/.idea/commandlinetools/schemas/frameworkDescriptionVersion1.1.4.xsd
