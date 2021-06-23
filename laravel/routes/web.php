@@ -18,8 +18,8 @@ Route::get('/', function () {
 Route::get('/test', function () {
     return ('test');
 });
-
-
+Route::get('/user_regist/admin', 'UserRegistController@admin');
+Route::get('/user_regist/leader', 'UserRegistController@leader');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
