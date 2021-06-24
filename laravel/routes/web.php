@@ -23,3 +23,9 @@ Route::get('/user_regist/leader', 'UserRegistController@leader');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+// ログインユーザーのみ
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/user_invitation','UserInvitationController@index');
+    Route::post('/user_invitation','UserInvitationController@index');
+
+});
