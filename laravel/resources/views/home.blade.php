@@ -16,6 +16,11 @@
 
                     You are logged in!
                 </div>
+                <div class="card-body">
+                    @if ($role == \App\Consts\UserConst::ROLE_LEADER)
+                    チケット登録
+                    @endif
+                </div>
             </div>
         </div>
     </div>
