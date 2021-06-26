@@ -8,6 +8,7 @@ use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
 
 class RegisterController extends Controller
 {
@@ -64,7 +65,33 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+
+
+        // ロール判定
+        if ($data['role'] == 'admin'){
+            $data['role'] = \UserConst::ROLE_ADMIN;
+        } elseif ($data['role'] == 'leader'){
+            $data['role'] = \UserConst::ROLE_LEADER;
+        } elseif ($data['role'] == 'member'){
+            $data['role'] = \UserConst::ROLE_MEMBER;
+        } else{
+            abort(403);
+        }
+
+        // チームIDを確定、現在のチームID最大値より一つ多い
+        $team_id = DB::table('users')->select('team_id')->orderBy('team_id', 'desc')->first();
+        $team_id = json_decode(json_encode($team_id), true);
+
+        // チームIDがなければ0を付与
+        if ($team_id==null){
+            $team_id['team_id'] = null;
+            $team_id['team_id'] =0;
+        }
+        $team_id = ++$team_id['team_id'];
+
         return User::create([
+            'team_id' => $team_id,
+            'role' => $data['role'],
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
