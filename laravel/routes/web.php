@@ -27,4 +27,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/user_invitation','UserInvitationController@index');
     Route::post('/user_invitation','UserInvitationController@index');
+    Route::get('/task','TaskController@index');
+    Route::post('/task','TaskController@index');
+    Route::get('/account_update', 'AccountUpdateController@index');
+    Route::post('/account_update', 'AccountUpdateController@index');
+
 });
