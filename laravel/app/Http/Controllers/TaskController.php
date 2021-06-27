@@ -19,8 +19,21 @@ class TaskController extends Controller
             if ($leader_team_id == $team_member->team_id)
             {
                 // バリデートルール
+                $validate_rule = [
+                    'team_member' => 'integer',
+                    'task' => 'required','size:140',
+                    'start' => 'required','date',
+                    'end' => 'required','date',
 
+                ];
+                // バリデートメッセージ
+                $message = [
+                    'task.required' => 'タスク内容を入れてください',
+                    'start.required' => '開始日を入力してください',
+                    'end.required' => '締切日を入力してください',
+                ];
                 // バリデート
+                $this->validate($request,$validate_rule, $message);
 
                 // セーブ
 

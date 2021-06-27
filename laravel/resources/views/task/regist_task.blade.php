@@ -4,7 +4,13 @@
 
 @section('content')
     <h2>タスク新規作成</h2>
-
+    <div>
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
     {{ Form::open(['action' => 'TaskController@index']) }}
     <p>担当メンバー</p>
     <p>{{ Form::select('team_member', $team_member_list, null, ['class' => 'team_member']) }}</p>
