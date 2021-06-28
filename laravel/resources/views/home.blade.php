@@ -18,7 +18,16 @@
                 </div>
                 <div class="card-body">
                     @if ($role == \App\Consts\UserConst::ROLE_LEADER)
-                    チケット登録
+                        <p><a href="{{action('TaskController@index')}}">
+                            <button type="button">新規タスク作成</button>
+                        </a></p>
+                        <p><a href="{{action('AccountUpdateController@index')}}">
+                            <button type="button">代表者アカウント修正</button>
+                        </a></p>
+                        <p><a href="{{action('UserInvitationController@index')}}">
+                            <button type="button">新規メンバー招待</button>
+                        </a></p>
+
                     @endif
                 </div>
             </div>

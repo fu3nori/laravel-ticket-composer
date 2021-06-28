@@ -16,3 +16,5 @@ laravel/.idea/commandlinetools/Laravel_2021_06_23_7_15.xml
 laravel/.idea/commandlinetools/schemas/frameworkDescriptionVersion1.1.4.xsd
 laravel/.idea/sshConfigs.xml
 laravel/.idea/webServers.xml
+laravel/.idea/laravel-plugin.xml
+laravel/.idea/symfony2.xml
