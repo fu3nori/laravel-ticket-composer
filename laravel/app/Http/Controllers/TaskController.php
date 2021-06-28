@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -36,7 +37,16 @@ class TaskController extends Controller
                 $this->validate($request,$validate_rule, $message);
 
                 // セーブ
-
+                $ticket =new \App\Models\Ticket();
+                $ticket->users_id = $request->team_member;
+                $ticket->team_id = Auth::user()->team_id;
+                $ticket->task = $request->task;
+                $ticket->save();
+                // 画面表示用ステータス
+                $system ="タスク追加完了";
+                $team_member = \App\User::select('id', 'name')->where('team_id', Auth::user()->team_id)->get();
+                $team_member_list = $team_member->pluck('name','id');
+                return view('/task/regist_task',compact('system','team_member_list'));
                 // リダイレクト
                 //
 
@@ -51,9 +61,9 @@ class TaskController extends Controller
             $team_id = Auth::user()->team_id;
             // チームメンバーの名前とユーザーID取得
             $team_member = \App\User::select('id', 'name')->where('team_id', $team_id)->get();
-
             $team_member_list = $team_member->pluck('name','id');
-            return view('/task/regist_task',compact('team_member_list'));
+            $system = "タスクを追加してください";
+            return view('/task/regist_task',compact('team_member_list','system'));
         }
 
 

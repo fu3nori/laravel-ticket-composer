@@ -5,6 +5,7 @@
 @section('content')
     <h2>タスク新規作成</h2>
     <div>
+        <p>{{$system}}</p>
         <ul>
             @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>
